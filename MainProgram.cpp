@@ -24,6 +24,51 @@ using namespace std;
 //  Goal: quickly recall variables, cin, cout, and arithmetic.
 // ============================================================
 
+double celsiusToFahrenheit(double c)
+{
+    return (c * 9.0 / 5.0) + 32;
+}
+
+bool isPrime(int n)
+{
+    if(n>1){
+        bool control = true;
+        for(int i=2; i<n; i++)
+        {
+            if (n%i == 0)
+            {
+                control = false;
+                break;
+            }
+        }
+        return control;
+    }else{
+        return false;
+    }
+}
+
+int maxOfThree(int a, int b, int c)
+{
+    if( b<a && c<a)
+    {
+        return a;
+    }else if ( a<b && c<b ){
+        return b;
+    }else if ( a<c && b<c ){
+        return c;
+    }else{
+        return 0;
+    }
+}
+
+double averageOfArray(double arr[], int size){
+    double sum=0;
+    for(int i=0; i<size; i++){
+        sum += arr[i];
+    }
+    return sum / size;
+}
+
 int main()
 {
     // ----------------------------------------------------------
@@ -42,8 +87,12 @@ int main()
     // TODO: Read the radius into the variable 'radius'
     // TODO: Compute the area and print it
 
-
-
+    cout << "Enter radius" << endl;
+    cin >> radius;
+    
+    double area = PI * pow(radius,2);
+    cout << "Area = " << area << endl;
+    
 
     // ============================================================
     //  SECTION 2 – CORE CONCEPTS  (~ 8 min)
@@ -100,7 +149,11 @@ int main()
     // TODO: Print floor of val
     // TODO: Print round of val
 
-
+    cout << sqrt(val) << endl;
+    cout << ceil(val) << endl;
+    cout << floor(val) << endl;
+    cout << round(val) << endl;
+    
 
 
     // ============================================================
@@ -126,8 +179,9 @@ int main()
     // TODO: Ask the user for a Celsius value and read it
     // TODO: Call celsiusToFahrenheit and print the result
 
-
-
+    cout << "Enter Celsius" << endl;
+    cin >> celsius;
+    cout << "F = " << celsiusToFahrenheit(celsius) << endl;
 
     // ----------------------------------------------------------
     // Exercise 3-B : isPrime
@@ -141,12 +195,20 @@ int main()
     // Ask the user for an integer and print whether it is prime.
     // ----------------------------------------------------------
 
-    int number;
     cout << "\n=== Prime Checker ===" << endl;
 
     // TODO: Ask the user for an integer and read it
     // TODO: Call isPrime and print "X is prime" or "X is not prime"
-
+    int prime_user;
+    cout << "Enter integer" << endl;
+    cin >> prime_user;
+    
+    if(isPrime(prime_user))
+    {
+        cout << "it IS prime" << endl;
+    }else{
+        cout << "it is NOT prime" << endl;
+    }
 
 
 
@@ -166,8 +228,15 @@ int main()
     // TODO: Ask the user for three integers and read them
     // TODO: Call maxOfThree and print the result
 
+    cout << "Enter 3 integers" << endl;
+    cout << "First integer" << endl;
+    cin >> x;
+    cout << "Second integer" << endl;
+    cin >> y;
+    cout << "Third integer" << endl;
+    cin >> z;
 
-
+    cout << "Max of three = " << maxOfThree(x, y, z) << endl;
 
     // ============================================================
     //  SECTION 4 – CHALLENGE  (~ 7 min)
@@ -193,15 +262,28 @@ int main()
 
     const int SIZE = 5;
     double grades[SIZE];
-
     cout << "\n=== Challenge: Statistics ===" << endl;
 
     // TODO: Read 5 values from the user into the array
     // TODO: Call average() and store the result
     // TODO: Print the average, sqrt of average, and rounded average
 
-
-
+    cout << "Enter 5 double" << endl;
+    cout << "First double" << endl;
+    cin >> grades[0];
+    cout << "Second double" << endl;
+    cin >> grades[1];
+    cout << "Third double" << endl;
+    cin >> grades[2];
+    cout << "Forth double" << endl;
+    cin >> grades[3];
+    cout << "Fifth double" << endl;
+    cin >> grades[4];
+    
+    double average = averageOfArray(grades, SIZE);
+    cout << "Average = " << average << endl;
+    cout << "Square Root of Average = " << sqrt(average) << endl;
+    cout << "Average Rounded to 2 decimal = " << round(average*100)/100 << endl;
 
     cout << "\n=== Lab Complete! ===" << endl;
     return 0;
